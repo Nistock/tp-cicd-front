@@ -15,9 +15,15 @@ export default defineConfigWithVueTs(
     rules: {"vue/multi-word-component-names": "off"},
   },
 
-  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
+  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**', 'src/env.d.ts']),
 
   pluginVue.configs['flat/essential'],
   vueTsConfigs.recommended,
   skipFormatting,
+  {
+    rules: {
+      'vue/multi-word-component-names': 'off',
+      'vue/no-reserved-component-names': 'off',
+    },
+  },
 )

@@ -28,8 +28,9 @@ jobs:
     - run: npm run type-check
   
   deploy-render:
+    if: github.ref_name == 'master' || github.ref_name == 'dev'
+    environment: ${{ (github.ref_name == 'master' || github.ref_type == 'tag') && 'Production' || github.ref_name == 'dev' && 'Développement'}}
     needs: build
-    if: ${{ github.ref_type }} == 'tag'
     runs-on: ubuntu-latest
     steps:
     - name: Deploy
